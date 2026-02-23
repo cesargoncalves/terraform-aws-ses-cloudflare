@@ -1,0 +1,16 @@
+---
+name: PR
+
+on:
+  pull_request:
+    paths:
+      - "**/*.tf"
+      - "**/*.tfvars"
+
+jobs:
+  call_workflow:
+    permissions:
+        contents: read
+    uses: cesargoncalves/github-workflows/.github/workflows/terraform-pr.yml@main
+    secrets:
+      AUTOMATION_PAT: ${{ secrets.AUTOMATION_PAT }}
