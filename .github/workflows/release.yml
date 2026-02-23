@@ -1,0 +1,12 @@
+---
+name: Release
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  call_workflow:
+    uses: cesargoncalves/github-workflows/.github/workflows/terraform-release.yml@main
+    secrets:
+      AUTOMATION_PAT: ${{ secrets.AUTOMATION_PAT }}

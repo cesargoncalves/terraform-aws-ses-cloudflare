@@ -1,0 +1,40 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(feat)",
+    ":semanticCommitScopeDisabled",
+    ":disableDependencyDashboard"
+  ],
+  "enabledManagers": ["terraform"],
+  "ignorePaths": ["examples/**"],
+  "prConcurrentLimit": 1,
+  "branchConcurrentLimit": 1,
+  "packageRules": [
+    {
+      "matchManagers": ["terraform"],
+      "matchDepTypes": ["required_version"],
+      "enabled": false
+    },
+    {
+      "matchManagers": ["terraform"],
+      "matchDepTypes": ["required_provider", "module"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "matchManagers": ["terraform"],
+      "matchDepTypes": ["required_provider", "module"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "enabled": false
+    },
+    {
+      "matchManagers": ["terraform"],
+      "matchDepTypes": ["required_provider", "module"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "automation",
+      "groupSlug": "automation",
+      "enabled": true
+    }
+  ]
+}

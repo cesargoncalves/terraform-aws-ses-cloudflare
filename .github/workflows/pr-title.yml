@@ -1,0 +1,15 @@
+---
+name: PR title
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+jobs:
+  call_workflow:
+    permissions:
+        pull-requests: read
+    uses: cesargoncalves/github-workflows/.github/workflows/pr-title.yml@main
